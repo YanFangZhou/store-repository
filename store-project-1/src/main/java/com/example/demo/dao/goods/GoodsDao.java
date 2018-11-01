@@ -13,7 +13,7 @@ public interface GoodsDao {
 	//获取商品列表
 	public List<GoodsDto> getGoodsList();
 	//根据商品ID获取商品详细信息
-	public GoodsDto getGoodsDtoInfoById(String goodsId);
+	//public GoodsDto getGoodsDtoInfoById(String goodsId);
 	//根据商品名称获取商品详情
-	public GoodsDto getGoodsDtoInfoByName(String goodsName);
+	//public GoodsDto getGoodsDtoInfoByName(String goodsName);
 }

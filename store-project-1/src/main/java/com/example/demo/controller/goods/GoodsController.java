@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,12 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.dto.goods.GoodsDto;
 import com.example.demo.dto.goods.GoodsImageDto;
 import com.example.demo.dto.goods.TypeDto;
+import com.example.demo.service.goods.GoodsService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/GoodsController")
 public class GoodsController {
+	@Autowired
+	private GoodsService goodsService;
 	
 	/**
 	 *  获取商品列表
@@ -25,7 +29,8 @@ public class GoodsController {
 	 */
 	@RequestMapping("/getGoodsList")
 	public ModelAndView getGoodsList(ModelAndView mv) {
-		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		List<GoodsDto> list = goodsService.getGoodsList();
+		/*List<GoodsDto> list = new ArrayList<GoodsDto>();
 		for(int x=0;x<10;x++) {
 			Date dt = new Date();
 			
@@ -72,7 +77,7 @@ public class GoodsController {
 			gd.setUpdateUserId(updateUserId);
 			
 			list.add(gd);
-		}
+		}*/
 		mv.addObject("goodsList", list);
 		mv.setViewName("goods/main");
 		return mv;
